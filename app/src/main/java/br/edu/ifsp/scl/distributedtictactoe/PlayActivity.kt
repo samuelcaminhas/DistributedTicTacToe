@@ -38,6 +38,25 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
             startGame()
         }
 
+        PlayData.playModel.observe(this) {
+           playModel = it
+           setUI()
+        }
+
+    }
+
+    fun setUI(){
+        playModel?.apply {
+            binding.b0.text = filledPos[0]
+            binding.b1.text = filledPos[1]
+            binding.b2.text = filledPos[2]
+            binding.b3.text = filledPos[3]
+            binding.b4.text = filledPos[4]
+            binding.b5.text = filledPos[5]
+            binding.b6.text = filledPos[6]
+            binding.b7.text = filledPos[7]
+            binding.b8.text = filledPos[8]
+        }
     }
 
     fun startGame(){
