@@ -33,7 +33,7 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
 
         database = FirebaseDatabase.getInstance().reference
 
-        fetchPlayModel()
+        PlayData.fetchPlayModel()
 
         binding.b0.setOnClickListener(this)
         binding.b1.setOnClickListener(this)
@@ -53,21 +53,6 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
             playModel = it
             setUI()
         }
-    }
-
-    private fun fetchPlayModel() {
-        val gameID = PlayData.playModel.value?.gameID ?: return
-        database.child("games").child(gameID).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                playModel = snapshot.getValue(PlayModel::class.java)
-                PlayData.savePlayModel(playModel!!)
-                setUI()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext, "Failed to load game data.", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 
     private fun setUI() {
@@ -121,7 +106,7 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
                     filledPos[i[1]] == filledPos[i[2]] &&
                     filledPos[i[0]].isNotEmpty()
                 ) {
-                    currentStatus = Status.F
+                    currentStatus = Status.W
                     winner = filledPos[i[0]]
                     break
                 }
