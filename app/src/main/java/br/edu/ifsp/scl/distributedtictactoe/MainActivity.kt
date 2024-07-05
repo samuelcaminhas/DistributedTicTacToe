@@ -2,7 +2,6 @@ package br.edu.ifsp.scl.distributedtictactoe
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             currentStatus = Status.C
         )
         PlayData.savePlayModel(playModel)
-        
+
         database.child("games").child(gameID).setValue(playModel)
         startPlay()
     }
@@ -67,7 +66,6 @@ class MainActivity : AppCompatActivity() {
                 model.currentStatus = Status.P
                 PlayData.savePlayModel(model)
 
-                // Atualizando o status do jogo no Realtime Database
                 database.child("games").child(gameID).setValue(model)
                 startPlay()
             }

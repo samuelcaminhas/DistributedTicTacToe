@@ -4,8 +4,8 @@ import kotlin.random.Random
 
 data class PlayModel(
     var filledPos: MutableList<String> = mutableListOf("", "", "", "", "", "", "", "", ""),
-    var winner: String = "",
-    var roundPlayer: String = (arrayOf("X", "O"))[Random.nextInt(2)],
+    var winner: String = "Vencedor",
+    var roundPlayer: String = (arrayOf("X", "O"))[Random.nextInt(1)],
     var gameID: String = "-1",
     var currentStatus: Status = Status.C
 )
