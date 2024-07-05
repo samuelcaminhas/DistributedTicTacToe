@@ -69,11 +69,13 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
 
             binding.gameStatusTV.text = when (currentStatus) {
                 Status.C -> "Codigo:" + gameID
-                Status.F -> "Fim de jogo"
+                Status.F -> "Fim de jogo, foi empate"
                 Status.P -> "Vez do jogador: " + roundPlayer
                 Status.W -> if (winner.isNotEmpty()) winner + " venceu" else "Empate"
             }
         }
+
+
     }
 
     private fun startGame() {
@@ -109,6 +111,10 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
                     currentStatus = Status.W
                     winner = filledPos[i[0]]
                     break
+                }
+
+                if(filledPos.none(){ it.isEmpty() }){
+                    currentStatus = Status.F
                 }
             }
         }
