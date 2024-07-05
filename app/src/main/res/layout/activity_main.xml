@@ -23,7 +23,21 @@
         android:id="@+id/newGameBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Começar novo jogo"
+        android:text="Começar novo jogo" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameIdIn"
+        android:inputType="number"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:hint="Codigo sala "/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/joinBT"
+        android:text="Entrar"/>
 
 </LinearLayout>
